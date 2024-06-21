@@ -9,6 +9,7 @@
 	],
 	"license": "MIT",
 	"icon": "assets/roughly_enough_loot_tables/icon.png",
+	"accessWidener" : "roughly_enough_loot_tables.accesswidener",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
