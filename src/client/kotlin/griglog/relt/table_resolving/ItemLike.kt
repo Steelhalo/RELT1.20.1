@@ -85,7 +85,7 @@ class ItemLike{
             return listOf(stack) //todo: cache these?
         val res = mutableListOf<ItemStack>()
         for (pair in enchantments){
-            if (stack.item != Items.ENCHANTED_BOOK && !pair.enchantment.canEnchant(stack))
+            if (stack.item != Items.ENCHANTED_BOOK && (!pair.enchantment.isPrimaryItem(stack) || !pair.enchantment.canEnchant(stack)))
                 continue
             res.add(stack.copy().apply{enchant(pair.enchantment, pair.level)})
         }

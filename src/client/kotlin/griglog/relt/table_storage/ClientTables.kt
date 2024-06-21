@@ -1,5 +1,6 @@
 package griglog.relt.table_storage
 
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import com.mojang.serialization.JsonOps
 import griglog.relt.RELT
@@ -38,7 +39,14 @@ fun recieveLootTables(compressed: ByteArray){
 
 fun openTableJson(name: ResourceLocation){
     val table = clientTables.get(name) ?: return
-    val json = LootDataType.TABLE.codec.encodeStart(JsonOps.INSTANCE, table).mapOrElse({it}, {RELT.logger.error(it)})
+
+    val regOps = RegistryOps.create(JsonOps.INSTANCE, Minecraft.getInstance().connection!!.registryAccess())
+    var json = LootDataType.TABLE.codec.encodeStart(regOps, table).mapOrElse({it}, {RELT.logger.error(it)})
+
+    //add newlines and indentation
+    val gson = GsonBuilder().setPrettyPrinting().create()
+    json = gson.toJson(JsonParser.parseString(json.toString()))
+
     val temp = File.createTempFile("RELT_" + name.toString().replace(':', '_').replace('/', '_'), ".json")
     temp.writeText(json.toString(), Charsets.UTF_8)
 

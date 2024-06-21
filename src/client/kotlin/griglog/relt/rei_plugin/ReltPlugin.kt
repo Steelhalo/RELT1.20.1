@@ -27,7 +27,8 @@ class ReltClient : REIClientPlugin {
     override fun registerDisplays(registry: DisplayRegistry) {
         clientTables.forEach{ (name, table) ->
             val (items, tables) = table.resolve()
-            registry.add(TableDisplay(name, items, tables, getInputs(name, table)))
+            if (items.size + tables.size > 0)
+                registry.add(TableDisplay(name, items, tables, getInputs(name, table)))
         }
     }
 }
