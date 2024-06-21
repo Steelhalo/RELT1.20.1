@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "roughly_enough_loot_tables",
+	"version": "${version}",
+	"name": "Roughly Enough Loot Tables",
+	"description": "Adds various loot tables to REI",
+	"authors": [
+		"GrigLog"
+	],
+	"license": "MIT",
+	"icon": "assets/roughly_enough_loot_tables/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"griglog.relt.entry_points.ReltCommon"
+		],
+		"client": [
+          "griglog.relt.entry_points.ReltClient"
+		],
+		"rei_client": [
+          "griglog.relt.rei_plugin.ReltClient"
+		],
+		"rei_common": [
+          "griglog.relt.rei_plugin.ReltServer"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.6",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	},
+	"suggests": {
+		"roughlyenoughitems": ">=16.0"
+	}
+}
