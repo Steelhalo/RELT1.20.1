@@ -40,7 +40,7 @@ fun resolveEntry(entry: LootPoolEntryContainer, items: MutableSet<ItemLike>, tab
 }
 
 fun resolveItem(lootItem: Item, functions: List<LootItemFunction>): ItemLike?{
-    if (lootItem == Items.AIR)  //TODO: should compare holders?
+    if (lootItem == Items.AIR)
         return null //I hope no modder will ever do this but better safe than sorry
     val item = ItemLike(lootItem)
     functions.forEach { function ->

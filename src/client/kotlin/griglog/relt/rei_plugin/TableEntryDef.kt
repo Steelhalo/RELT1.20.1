@@ -1,6 +1,5 @@
 package griglog.relt.rei_plugin
 
-import com.mojang.blaze3d.systems.RenderSystem
 import griglog.relt.RELT
 import me.shedaniel.math.Rectangle
 import me.shedaniel.rei.api.client.entry.renderer.EntryRenderer
@@ -87,7 +86,6 @@ class TableEntryDef: EntryDefinition<ResourceLocation>{
 
         override fun render(entry: EntryStack<ResourceLocation>, graphics: GuiGraphics, bounds: Rectangle, mouseX: Int, mouseY: Int, delta: Float) {
             val tex = if (entry.value == rootId) textureMany else textureSingle
-            //RenderSystem.setShaderTexture(0, tex)  todo: useless?
             graphics.blit(tex, bounds.x, bounds.y, 0f, 0f, 16, 16, 16, 16)
         }
 

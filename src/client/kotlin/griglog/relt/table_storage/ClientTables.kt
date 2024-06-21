@@ -1,6 +1,5 @@
 package griglog.relt.table_storage
 
-import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.mojang.serialization.JsonOps
 import griglog.relt.RELT
@@ -22,13 +21,10 @@ fun recieveLootTables(compressed: ByteArray){
     ByteArrayInputStream(compressed).use{
         GZIPInputStream(it).apply{ bytes = readAllBytes(); close() }
     }
-    //val gson = LootDataType.TABLE.parser()
-    //val gson = Gson()  /
     clientTables.clear()
     val json = JsonParser.parseString(String(bytes))
     json.asJsonObject.entrySet().forEach {(key, value) ->
         val rl = ResourceLocation(key)
-        //val table = gson.fromJson(value, LootTable::class.java)
         val regOps = RegistryOps.create(JsonOps.INSTANCE, Minecraft.getInstance().connection!!.registryAccess())
         LootDataType.TABLE.codec.decode(regOps, value).mapOrElse(
             {val table = it.first
@@ -42,7 +38,6 @@ fun recieveLootTables(compressed: ByteArray){
 
 fun openTableJson(name: ResourceLocation){
     val table = clientTables.get(name) ?: return
-    //val json = Gson().newBuilder().setPrettyPrinting().create().toJson(table)  //todo: find existing instance
     val json = LootDataType.TABLE.codec.encodeStart(JsonOps.INSTANCE, table).mapOrElse({it}, {RELT.logger.error(it)})
     val temp = File.createTempFile("RELT_" + name.toString().replace(':', '_').replace('/', '_'), ".json")
     temp.writeText(json.toString(), Charsets.UTF_8)
