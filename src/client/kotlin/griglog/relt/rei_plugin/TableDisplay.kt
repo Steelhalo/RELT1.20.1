@@ -9,8 +9,11 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.resources.ResourceLocation
 import java.util.*
 
+/** This class has nothing to do with rendering, it is responsible for storing input items and output items,
+which is required to link recipes together */
 class TableDisplay : BasicDisplay {
-    constructor(name: ResourceLocation, result: Collection<ItemLike>, tables:Collection<EntryStack<ResourceLocation>>, inputs: EntryIngredient?) : super(
+    constructor(name: ResourceLocation, result: Collection<ItemLike>, tables:Collection<EntryStack<ResourceLocation>>, inputs: EntryIngredient?)
+            : super(
         mutableListOf(tableIng(name), inputs).filterNotNull(),
         mutableListOf<EntryIngredient>().apply{
             addAll(result.sortedWith(Comparator.comparingInt{il -> BuiltInRegistries.ITEM.getId(il.stack.item)})

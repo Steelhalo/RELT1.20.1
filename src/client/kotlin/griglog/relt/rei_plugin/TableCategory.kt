@@ -22,6 +22,7 @@ import net.minecraft.util.Mth
 
 val categoryId: CategoryIdentifier<TableDisplay> = CategoryIdentifier.of(RELT.id, "plugin")
 
+/** This class is responsible for the UI */
 class TableCategory : DisplayCategory<TableDisplay> {
     override fun getCategoryIdentifier() = categoryId
 

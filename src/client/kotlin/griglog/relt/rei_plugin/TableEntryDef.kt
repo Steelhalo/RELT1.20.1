@@ -17,6 +17,9 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.TagKey
 import java.util.stream.Stream
 
+/** Definition of an entry type that looks like
+ icon.png (if it is a loot table) or
+ icons.png (if it is a link to all loot tables, effectively a fake table with id "roughly_enough_loot_tables:root")*/
 class TableEntryDef: EntryDefinition<ResourceLocation>{
     companion object Constants{
         val type: EntryType<ResourceLocation> = EntryType.deferred<ResourceLocation>(ResourceLocation(RELT.id, "table"))
