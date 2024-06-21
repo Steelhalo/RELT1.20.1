@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import com.mojang.serialization.JsonOps
 import griglog.relt.RELT
+import griglog.relt.entry_points.ReltClient
 import net.minecraft.client.Minecraft
 import net.minecraft.resources.RegistryOps
 import net.minecraft.resources.ResourceLocation
@@ -17,23 +18,26 @@ import java.util.zip.GZIPInputStream
 
 val clientTables: HashMap<ResourceLocation, LootTable> = hashMapOf()
 fun recieveLootTables(compressed: ByteArray){
+    RELT.logger.info("Recieved loot tables (${compressed.size} bytes).")
     val t1 = System.nanoTime()
     val bytes: ByteArray
     ByteArrayInputStream(compressed).use{
         GZIPInputStream(it).apply{ bytes = readAllBytes(); close() }
     }
     clientTables.clear()
-    val json = JsonParser.parseString(String(bytes))
-    json.asJsonObject.entrySet().forEach {(key, value) ->
+    val json = JsonParser.parseString(String(bytes)).asJsonObject
+    json.entrySet().forEach {(key, value) ->
         val rl = ResourceLocation(key)
         val regOps = RegistryOps.create(JsonOps.INSTANCE, Minecraft.getInstance().connection!!.registryAccess())
         LootDataType.TABLE.codec.decode(regOps, value).mapOrElse(
             {val table = it.first
-             clientTables.put(rl, table)},
+             if (table.paramSet !in ReltClient.config.skipTypes && (!ReltClient.config.skipEmptyTables || table.pools.isNotEmpty()))
+                clientTables.put(rl, table)},
             {error -> RELT.logger.error("Failed to parse loot table $rl: $error")})
     }
     val t2 = System.nanoTime()
-    RELT.logger.info("Recieved and decompressed ${clientTables.size} loot tables (${bytes.size} bytes). Took ${(t2 - t1) / 1000000} ms.")
+    RELT.logger.info("Decompressed loot tables to ${bytes.size} bytes, " +
+                             "${clientTables.size} saved out of ${json.size()} received. Took ${(t2 - t1) / 1000000} ms.")
 }
 
 
