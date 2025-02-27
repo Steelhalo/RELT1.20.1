@@ -11,23 +11,20 @@
 	"icon": "assets/roughly_enough_loot_tables/icon.png",
 	"accessWidener" : "roughly_enough_loot_tables.accesswidener",
 	"environment": "*",
-	"entrypoints": {
-		"main": [
-		    {
-			    "adapter": "kotlin",
-			    "value": "griglog.relt.entry_points.ReltCommon"
-		    }
-		],
-		"client": [
-          "griglog.relt.entry_points.ReltClient"
-		],
-		"rei_client": [
-          "griglog.relt.rei_plugin.ReltClient"
-		],
-		"rei_common": [
-          "griglog.relt.rei_plugin.ReltServer"
-		]
-	},
+"entrypoints": {
+    "main": [
+        "griglog.relt.entry_points.ReltCommon"
+    ],
+    "client": [
+        "griglog.relt.entry_points.ReltClient"
+    ],
+    "rei_client": [
+        "griglog.relt.rei_plugin.ReltClient"
+    ],
+    "rei_common": [
+        "griglog.relt.rei_plugin.ReltServer"
+    ]
+},
 	"depends": {
 		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.20.1",
