@@ -26,13 +26,13 @@
 		]
 	},
 	"depends": {
-		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.20.6",
-		"java": ">=21",
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=15",
 		"fabric-api": "*",
 		"fabric-language-kotlin": "*"
 	},
 	"suggests": {
-		"roughlyenoughitems": ">=16.0"
+		"roughlyenoughitems": ">=12.1"
 	}
 }
