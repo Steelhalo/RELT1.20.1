@@ -15,7 +15,7 @@
 		"main": [
 		    {
 			    "adapter": "kotlin",
-			    "value": "package.ClassName"
+			    "value": "package.kotlin"
 		    }
 		],
 		"client": [
