@@ -15,7 +15,7 @@
 		"main": [
 		    {
 			    "adapter": "kotlin",
-			    "value": "package.kotlin"
+			    "value": "griglog.relt.entry_points.ReltCommon"
 		    }
 		],
 		"client": [
