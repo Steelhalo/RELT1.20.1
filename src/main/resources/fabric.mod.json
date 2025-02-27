@@ -32,10 +32,10 @@
 		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
-		"fabric-api": "0.92.3+1.20.1",
+		"fabric-api": ">=0.92.3+1.20.1",
 		"fabric-language-kotlin": ">=1.13.1+kotlin.2.1.10"
 	},
 	"suggests": {
-		"roughlyenoughitems": ">=12.1"
+		"roughlyenoughitems": ">=12.1.785"
 	}
 }
