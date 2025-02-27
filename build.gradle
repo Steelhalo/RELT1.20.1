@@ -39,15 +39,15 @@ dependencies {
 		officialMojangMappings()
 		parchment("org.parchmentmc.data:parchment-1.20.1:2023.09.03@zip")
 	}
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc:fabric-loader:0.16.10"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.92.3"
 	modImplementation "net.fabricmc:fabric-language-kotlin:1.13.1+kotlin.2.1.10"
 
-	/*modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}"*/
+	/*modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:12.1.785"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.1.785"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:12.1.785"*/
 
 	modApi "me.shedaniel:RoughlyEnoughItems-fabric:12.1.785"
 	modApi "me.shedaniel.cloth:cloth-config-fabric:11.1.136"
