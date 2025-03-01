@@ -5,5 +5,5 @@ Fabric API https://github.com/FabricMC/fabric
 Roughly Enough Items https://github.com/shedaniel/RoughlyEnoughItems  
 Fabric Language Kotlin https://github.com/FabricMC/fabric-language-kotlin  
 
-Thank you to [Nowkiy](https://github.com/Nowkiy) for the original port.
+Thank you to [Nowkiy](https://github.com/Nowkiy) for the original port.  
 Please check the origanal project at https://github.com/GrigLog/RoughlyEnoughLootTables.
